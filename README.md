@@ -124,41 +124,40 @@ this readme.md
 ---
 | Attribute | Definition | Data Type |
 | ----- | ----- | ----- |
-
-|listing_id	Listing ID||
-|name	Listing Name||
-|host_id	Host ID||
-|host_since	Date the Host joined Airbnb||
-|host_location	Location where the Host is based||
-|host_response_time	Estimate of how long the Host takes to respond||
-|host_response_rate	Percentage of times the Host responds||
-|host_acceptance_rate	Percentage of times the Host accepts a booking request||
-|host_is_superhost	Binary field to determine if the Host is a Superhost||
-|host_total_listings_count	Total listings the Host has in Airbnb||
-|host_has_profile_pic	Binary field to determine if the Host has a profile picture||
-|host_identity_verified	Binary field to determine if the Host has a verified identity||
-|neighbourhood	Neighborhood the Listing is in||
-|district	District the Listing is in||
-|city	City the Listing is in||
-|latitude	Listing's latitude||
-|longitude	Listing's longitude||
-|property_type|	Type of property for the Listing||
-|room_type|	Type of room type in Airbnb for the Listing||
-|accommodates|	Guests the Listing accomodates||
-|bedrooms|	Bedrooms in the Listing||
-|amenities|	Amenities the Listing includes||
-|price|	Listing price (in each country's currency)||
-|minimum_nights|	Minimum nights per booking||
-|maximum_nights|	Maximum nights per booking||
-|review_scores_rating|	Listing's overall rating (out of 100)||
-|review_scores_accuracy|	Listing's accuracy score based on what's promoted in Airbnb (out of 10)||
-|review_scores_cleanliness|	Listing's cleanliness score (out of 10)||
-|review_scores_checkin|	Listing's check-in experience score (out of 10)||
-|review_scores_communication|	Listing's communication with the Host score (out of 10)||
-|review_scores_location|	Listing's location score within the city (out of 10)||
-|review_scores_value|	Listing's value score relative to its price (out of 10)||
-|instant_bookable|	Binary field to determine if the Listing can be booked instantly||
-|total_amenities|  Sum of Amenities after transformed to dummies||
+|listing_id|	Listing ID|int64|
+|name|	Listing Name|object|
+|host_id|	Host ID|int64|
+|host_since|	Date the Host joined Airbnb|object|
+|host_location|	Location where the Host is based|object|
+|host_response_time|	Estimate of how long the Host takes to respond|object|
+|host_response_rate|	Percentage of times the Host responds|float64|
+|host_acceptance_rate|	Percentage of times the Host accepts a booking request|float64|
+|host_is_superhost|	Binary field to determine if the Host is a Superhost|object|
+|host_total_listings_count|	Total listings the Host has in Airbnb|object|
+|host_has_profile_pic|	Binary field to determine if the Host has a profile picture|object|
+|host_identity_verified|Binary field to determine if the Host has a verified identity|object|
+|neighbourhood|	Neighborhood the Listing is in|object|
+|district|	District the Listing is in|object|
+|city|	City the Listing is in|object|
+|latitude|	Listing's latitude|float64|
+|longitude|	Listing's longitude|float64|
+|property_type|	Type of property for the Listing|object|
+|room_type|	Type of room type in Airbnb for the Listing|object|
+|accommodates|	Guests the Listing accomodates|int64|
+|bedrooms|	Bedrooms in the Listing|float64|
+|amenities|	Amenities the Listing includes|object|
+|price|	Listing price (in each country's currency)|int64|
+|minimum_nights|	Minimum nights per booking|int64|
+|maximum_nights|	Maximum nights per booking|int64|
+|review_scores_rating|	Listing's overall rating (out of 100)|float64|
+|review_scores_accuracy|	Listing's accuracy score based on what's promoted in Airbnb (out of 10)|float64|
+|review_scores_cleanliness|	Listing's cleanliness score (out of 10)|float64|
+|review_scores_checkin|	Listing's check-in experience score (out of 10)|float64|
+|review_scores_communication|	Listing's communication with the Host score (out of 10)|float64|
+|review_scores_location|	Listing's location score within the city (out of 10)|float64|
+|review_scores_value|	Listing's value score relative to its price (out of 10)|float64|
+|instant_bookable|	Binary field to determine if the Listing can be booked instantly|object|
+|total_amenities|  Sum of Amenities after transformed to dummies|int64|
 ***
 [[Back to top](#top)]
 ## <a name="wrangle"></a>Data Acquisition and Preparation
