@@ -1,5 +1,4 @@
 # Individual_Project_Airbnb
-# Project_2
 
 
 
@@ -18,17 +17,34 @@
 [[Conclusion](#conclusion)]
 ___
 ## <a name="project_description"></a>Project Description:
-Document code, process (data acquistion, preparation, exploratory data analysis and statistical testing, modeling, and model evaluation), findings, and key takeaways in a Jupyter Notebook Final Report.
 
-Create modules (acquire.py, prepare.py) that make your process repeateable and your report (notebook) easier to read and follow.
+****
+# Executive Summary
+##  Goals:
 
-Ask exploratory questions of your data that will help you understand more about the attributes and drivers of customers churning. Answer questions through charts and statistical tests.
+# The purpose of this project is utilize a database of Airbnb Properties to construct a model that can predict their price. 
+The datasource includes the Listing.csv from Kagle. Can that model be beaten and give us a business advantage?
 
-Construct a model to predict tax value of homes using regression techniques.
+Goal : Build a model using only the features of the property to predict listing price. 
 
-Be prepared to answer panel questions about your code, process, findings and key takeaways, and model.
+# Question asked
+## Is Listing Price related to number of bedrooms
+## Is Listing Price related to number of ammenities
+## Is Listing Price related to location of listing
 
 
+
+
+## Takeaway:
+
+More rooms and More listed Ammenities does allow for increased price of Airbnb, if listing an Airbnb it would be more profitable to have a lot of rooms and a list everything in the property. 
+
+## Recommendation:
+
+Get more information such as time of year data, quality, property tax value, and possibly begin to jump in to looking at rating and how ratings correlates to all the factors give.  
+
+***
+---
 [[Back to top](#top)]
 
 ***
@@ -37,14 +53,24 @@ a)Create deliverables:
 - README
 - final_report.ipynb
 - working_report.ipynb
+- wrangler.py
+
 b) Build functional wrangle.py, explore.py, and model.py files
+
 c) Acquire the data from the Code Up database via the wrangle.acquire functions
+
 d) Prepare and split the data via the wrangle.prepare functions
+
 e) Explore the data and define hypothesis. Run the appropriate statistical tests in order to accept or reject each null hypothesis. Document findings and takeaways.
-f) Create a baseline model in predicting home cost and document the RSME.
-g) Fit and train regression models to predict cost on the train dataset.
+
+f) Create a baseline model in predicting listing price and document the RSME.
+
+g) Fit and train models to predict price on the train dataset.
+
 i) Evaluate the models by comparing the train and validation data.
+
 j) Select the best model and evaluate it on the train data.
+
 k) Develop and document all findings, takeaways, recommendations and next steps.
 
 
@@ -63,32 +89,30 @@ Conclusion
 ---
 # Hypothesis 1
 
-## $H_0$: Tax Value is independent of the Sqft of a home 
+## $H_0$: Price is independent of the Number of Bedrooms of a listing has
 
-## $H_a$ : Tax Value is dependent of the Sqft of a home 
+## $H_a$ : Price is dependent of Number of Bedrooms of a listing has
 
 ---
 
 # Hypothesis 2
 
-## $H_0$: Tax Value is independent of the Number of Bedrooms of a home has
+## $H_0$: Price is independent of the Number of Ammenities of a listing has
 
-## $H_a$ : Tax Value is dependent of Number of Bedrooms of a home has
+## $H_a$ : Price is dependent of Number of Ammenities of a listing has
 
 ---
-# Hypothesis 3
+~# Hypothesis 3~
+#Dropped because of issues with feature
 
+~## $H_0$: Price is independent of the Location of a listing~
 
-## $H_0$: Tax Value is independent of the Number of Bathrooms a home has
-
-## $H_a$ : Tax Value is dependent of Number of Bathrooms of a home has
+~## $H_a$ : Price is dependent of the location of a listing~
 
 ---
 
 ### Target variable
-number_services
-monthly_avg
-monthly_charges
+Price
 
 ### Need to haves (Deliverables):
 acquire.py
@@ -105,11 +129,16 @@ this readme.md
 ***
 
 ## <a name="findings"></a>Key Findings:
-## There is more than one way to predict but simple is better and diving to deep will cause you to drown.
 
-### Sqft plays a factor in value
-### Number of Bathroom plays a factor in Value 
-### Number of Bedrooms plays a factor in Value
+
+While location City of the property does impact price it really is a variable that had to be dropped in order to make a better model.
+
+
+Bedroom count is related to the price of a Airbnb but there are other factors that were not included in this analysis such as location, time of year, and quality of bedroom. That is because there was not time of year data present with prices and the this created numerous outliers one example is a room in Brasil was going for $625,615
+so there was likely a currency issue along a timing issue with this one bedroom shared which was listed for over $600k.
+
+Number of Ammenities is related to the price of an Airbnb but there is no real quality control over this feature, so a lister could list everything in their Airbnb and make the total number of their Airbnb skew the data. 
+
 
 
 [[Back to top](#top)]
@@ -121,6 +150,12 @@ this readme.md
 
 
 ### Data Used
+---
+***
+| Target | Definition | Data Type |
+| ----- | ----- | ----- |
+|price|	Listing price (in each country's currency)|int64|
+***
 ---
 | Attribute | Definition | Data Type |
 | ----- | ----- | ----- |
@@ -181,7 +216,7 @@ Repeat until you get something you understand.
 
 
 ### Takeaways from exploration:
-
+Need to drop City because correlation between Price and Location is hard to really account for. 
 
 ***
 
@@ -189,14 +224,17 @@ Repeat until you get something you understand.
 [[Back to top](#top)]
 
 
-### Stats Test 1: Chi2:
+# Hypothesis 1:
 
-#### Hypothesis 1:
-# $H_0$: Tax Value is independent of the Sqft of a home 
 
-## $H_a$ : Tax Value is dependent of the Sqft of a home 
+## alpha = .05
 
-#### Alpha value:
+## Pearson R test
+
+## $H_0$: Price is independent of the Number of Bedrooms of a listing has
+
+## $H_a$ : Price is dependent of Number of Bedrooms of a listing has
+
 
 - alpha = 1 - confidence, therefore alpha is 0.05
 
@@ -207,16 +245,18 @@ We reject the null hypothesis.
 #### Summary:
 While I still do not fully grasp this process it was completed
 ***
-### Stats Test 2: Chi2
 
 
-#### Hypothesis 2:
-## $H_0$: Tax Value is independent of the Number of Bedrooms of a home has
+# Hypothesis 2:
 
-## $H_a$ : Tax Value is dependent of Number of Bedrooms of a home has
-#### Alpha value:
-- alpha = 1 - confidence, therefore alpha is 0.05
 
+## alpha = .05
+
+## Pearson R test
+
+## $H_0$: Price is independent of the Number of Ammenities of a listing has
+
+## $H_a$ : Price is dependent of Number of Ammenities of a listing has
 #### Results:
 We reject the null hypothesis.
 
@@ -224,23 +264,7 @@ We reject the null hypothesis.
 #### Summary:
 While I still do not fully grasp this process it was completed
 
-### Stats Test 3: Chi2
-
-#### Hypothesis 3:
-# $H_0$: Tax Value is independent of the Number of Bathrooms a home has
-
-## $H_a$ : Tax Value is dependent of Number of Bathrooms of a home has
-
-#### Alpha value:
-- alpha = 1 - confidence, therefore alpha is 0.05
-
-#### Results:
-We reject the null hypothesis.
-
-
-#### Summary:
-While I still do not fully grasp this process it was completed
-
+***
 
 ## <a name="model"></a>Modeling:
 [[Back to top](#top)]
@@ -252,45 +276,43 @@ While I still do not fully grasp this process it was completed
 - Baseline Results: 
 Our baseline accuracy in all cases on the Dataset is :
 
-RMSE Mean:
-248150.10218076012
-----------------
-RMSE Median:
-250857.8604903843
+RRMSE using Mean
+Train/In-Sample:  235.4 
+Validate/Out-of-Sample:  237.29
 
 - Selected features to input into models:
-    - features = Area, Bathrooms, Bedrooms
+    - features = Total_amenities, Bedrooms
 
 ***
 
 ### Models and R<sup>2</sup> Values:
 - Will run the following regression models:
 
-    
-
+RMSE for Lasso + Lars
+Training/In-Sample:  235.4 
+Validation/Out-of-Sample:  237.29
+R2 Value: 0.0
+---
+RMSE for OLS using LinearRegression
+Training/In-Sample:  229.0 
+Validation/Out-of-Sample:  230.77
+R2 Value: 0.05
+---
+RMSE for Polynomial Model, degrees=2
+Training/In-Sample:  228.95 
+Validation/Out-of-Sample:  230.79
+R2 Value: 0.05
+---
 - Other indicators of model performance with breif defiition and why it's important:
 
     
 
 
-## Selecting the Best Model:
+# Selecting the Best Model:
+Lasso + Lars was selected but it is likely overfit
 
-### Use Table below as a template for all Modeling results for easy comparison:
-
-RMSE for Lasso & Lars
-Training/In-Sample:  219234.24 
-Validation/Out-of-Sample:  217879.84
-R2: 0.22
-_______________________________________________
-RMSE for OLS using LinearRegression
-Training/In-Sample:  219233.87 
-Validation/Out-of-Sample:  217881.69
-R2: 0.22
-_______________________________________________
-RMSE for Polynomial Model, degrees=2
-Training/In-Sample:  219176.92 
-Validation/Out-of-Sample:  217894.86
-R2: 0.22
+RMSE for Lasso + Lars
+Test/In-Sample:  236.706649483469
 
 
 
@@ -299,22 +321,34 @@ R2: 0.22
 ***
 
 ## <a name="conclusion"></a>Conclusion:
-Sqft plays a factor in value,
-Number of Bathroom plays a factor in Value,
-Number of Bedrooms plays a factor in Value,
+While location City of the property does impact price it really is a variable that had to be dropped in order to make a better model.
+
+Bedroom count is related to the price of a Airbnb but there are other factors that were not included in this analysis such as location, time of year, and quality of bedroom. That is because there was not time of year data present with prices and the this created numerous outliers one example is a room in Brasil was going for $625,615.
+
+So there was likely a currency issue along a timing issue with this one bedroom shared which was listed for over $600k.
+
+Number of Ammenities is related to the price of an Airbnb but there is no real quality control over this feature, so a lister could list everything in their Airbnb and make the total number of their Airbnb skew the data.
+
+Takeaway:
+More rooms and More listed Ammenities does allow for increased price of Airbnb, if listing an Airbnb it would be more profitable to have a lot of rooms and a list everything in the property.
+
+Recommendation:
+Get more information such as time of year data, quality, property tax value, and possibly begin to jump in to looking at rating and how ratings correlates to all the factors give.
+
+Next steps are to refine functions clean up notebook and then run test on other features.
+
 ---
 ### Steps to Reproduce
 Your readme should include useful and adequate instructions for reproducing your analysis and final report.
 
-For example:
 
-1)You will need an env.py file that contains the hostname, username and password of the mySQL database that contains the titanic_db.passengers table. Store that env file locally in the repository.
+1)You will need download the Listing.csv from https://www.kaggle.com/datasets/mysarahmadbhat/airbnb-listings-reviews
 
-2)clone my repo (including the wrangle.py, explore.py, and model.py) (confirm .gitignore is hiding your env.py file)
+2)clone my repo (including the wrangler.py) (confirm .gitignore is hiding your env.py file)
 
 3)libraries used are pandas, matplotlib, seaborn, numpy, sklearn,scipy, math.
 
-4)you should be able to run churn_report.
+4)you should be able to create the same results.
 
 
 [[Back to top](#top)]
